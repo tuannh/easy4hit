@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+	<class name="easyhits4u.Domain.Easyhits4uType, easyhits4u" table="Easyhits4uTypes">
+		<id name="Id" type="Int32" unsaved-value="0">
+			<column name="Easyhits4uTypeID" length="4" sql-type="int" not-null="true" unique="true" index="PK_Easyhits4uTypes_1"/>
+			<generator class="native" />
+		</id>
+		<property name="Easyhits4uTypeName" type="String">
+			<column name="Easyhits4uTypeName" length="150" sql-type="nvarchar" not-null="true"/>
+		</property>
+		<bag name="Easyhits4us" inverse="true" lazy="true" cascade="all-delete-orphan">
+			<key column="Easyhits4uTypeID"/>
+			<one-to-many class="easyhits4u.Domain.Easyhits4u, easyhits4u"/>
+		</bag>
+	</class>
+</hibernate-mapping>
