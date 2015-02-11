@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+	<class name="easyhits4u.Domain.Easyhits4u, easyhits4u" table="Easyhits4u">
+		<id name="Id" type="Int32" unsaved-value="0">
+			<column name="ID" length="4" sql-type="int" not-null="true" unique="true" index="PK_Easyhits4u"/>
+			<generator class="native" />
+		</id>
+		<property name="Name" type="String">
+			<column name="Name" length="50" sql-type="nvarchar" not-null="false"/>
+		</property>
+		<property name="Image" type="Byte[]">
+			<column name="Image" sql-type="image" not-null="false"/>
+		</property>
+		<property name="Length" type="Int32">
+			<column name="Length" length="4" sql-type="int" not-null="false"/>
+		</property>
+		<property name="IsApproved" type="Boolean">
+			<column name="IsApproved" length="1" sql-type="bit" not-null="false"/>
+		</property>
+    <property name="Count" type="Int32">
+      <column name="[Count]" length="4" sql-type="int" not-null="false"/>
+    </property>
+    <property name="Note" type="String">
+      <column name="Note" length="500" sql-type="nvarchar" not-null="false"/>
+    </property>
+		<many-to-one name="Easyhits4uType" class="easyhits4u.Domain.Easyhits4uType, easyhits4u">
+			<column name="Easyhits4uTypeID" length="4" sql-type="int" not-null="false"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>
